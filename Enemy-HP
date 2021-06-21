@@ -1,0 +1,47 @@
+public class enemy1hp : MonoBehaviour
+{
+    public Animator animator;
+    public int maxHealt = 100;
+    public float speed;
+    int curentHealt;
+    private float dazedTime;
+    public float startDazedTime;
+    
+    void Start()
+    {
+        curentHealt = maxHealt; 
+    }
+
+    void Update()
+    {
+        if (dazedTime <= 0)
+        {
+            speed = 1;
+        }
+        else
+        {
+            speed = 0;
+            dazedTime -= Time.deltaTime;
+        }
+    }
+
+    public void TakeDamage(int damage )
+    {
+        dazedTime = startDazedTime;
+        curentHealt -= damage;
+        animator.SetTrigger("Hurt");
+        if (curentHealt <= 0)
+        {
+            Die();
+
+        }
+    }
+    
+    void Die()
+    {
+        animator.SetBool("IsDead", true);
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<enemyAi>().enabled = false;
+        this.enabled = false;
+    }
+}

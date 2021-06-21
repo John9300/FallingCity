@@ -1,0 +1,12 @@
+public class entrence : MonoBehaviour
+{
+   public string entrencePassword;
+
+   private void Start()
+    {
+        if (movmentScript.instance.scenePassword == entrencePassword)
+        {
+            movmentScript.instance.transform.position = transform.position;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+public class only1 : MonoBehaviour
+{
+    private GameObject[] q1;
+    private void OnLevelWasLoaded(int level)
+    {
+        q1 = GameObject.FindGameObjectsWithTag("only1");
+        if (q1.Length > 1)
+        {
+            Destroy(q1[1]);
+        }
+    }
+}

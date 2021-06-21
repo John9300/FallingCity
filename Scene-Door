@@ -1,0 +1,28 @@
+public class BD : MonoBehaviour
+{
+
+    public int iLevTL;
+    public string sLevTL;
+    public bool useToLoadLev = false;
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject collisionGameObject = collision.gameObject;
+        if (collisionGameObject.name == ("Player"))
+        {
+            LoadScene();
+        }
+    }
+
+    void LoadScene()
+    {
+        if (useToLoadLev)
+        {
+            SceneManager.LoadScene(iLevTL);
+        } 
+        else
+        {
+            SceneManager.LoadScene(sLevTL);
+        }
+    }
+}

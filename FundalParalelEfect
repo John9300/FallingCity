@@ -1,0 +1,19 @@
+public class fundalParalelEfect : MonoBehaviour
+{
+    [SerializeField] private Vector2 paeallaxEffectM;
+    private Transform cameraTransform;
+    private Vector3 lastCameraPosition;
+
+    private void Start()
+    {
+        cameraTransform = Camera.main.transform;
+        lastCameraPosition = cameraTransform.position;
+    }
+    
+    private void LateUpdate()
+    {
+        Vector3 deltaMovment = cameraTransform.position - lastCameraPosition;
+        transform.position += new Vector3(deltaMovment.x * paeallaxEffectM.x, deltaMovment.y * paeallaxEffectM.y);
+        lastCameraPosition = cameraTransform.position;
+    }
+}

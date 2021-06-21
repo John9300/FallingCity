@@ -1,0 +1,42 @@
+public class enemyAgro : MonoBehaviour
+{
+    [SerializeField] Transform player;
+    [SerializeField] float agroRange;
+    [SerializeField]  int moveSpeed;
+    private bool FindPlayer;
+    Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        float disPlayer = Vector2.Distance(transform.position, player.position);
+        if (disPlayer < agroRange)
+        {
+            AfterPlayeLR();
+        }
+        else
+        {
+             StopC();
+        }
+        }
+        void AfterPlayeLR()
+        {
+            if (transform.position.x < player.position.x)
+            {
+                rb.velocity = new Vector2(moveSpeed, 0);
+            }
+            else if (transform.position.x > player.position.x)
+            {
+                rb.velocity = new Vector2(-moveSpeed, 0);
+            }
+        }
+    
+    void StopC()
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+ }
